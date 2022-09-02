@@ -22,6 +22,10 @@ class LinkedList{
   }
   prepend(value){
     //add a new node containing value to the start of the list
+    let newNode = new Node(value);
+    let node = this.head;
+    this.head = newNode;
+    this.head.next = node;
   }
   size(){
     //returns total number of size
@@ -69,6 +73,7 @@ const list  = new LinkedList();
 list.append(3)
 list.append(8)
 list.append(4)
+list.prepend('000')
 list.append(98)
 list.append(6)
 
