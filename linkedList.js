@@ -65,6 +65,12 @@ class LinkedList{
   }
   find(value){
     //returns index of the value, null if not found
+    let node = this.head;
+    for(let i=0; node; i++){
+      if(node.value === value) return i;
+      node = node.next;
+    }
+    return null;
   }
   toString(){
     //return string form of list
@@ -110,3 +116,6 @@ console.log("at index "+i+" -> ", list.at(i))
 let v = 98
 console.log('is contain '+v+'? ', list.contains(v));
 console.log('is contain '+(v+1)+'? ', list.contains(v+1));
+let f = 8;
+console.log('index of '+f+' -> ', list.find(f))
+console.log('index of '+(f-1)+' -> ', list.find(f-1))
