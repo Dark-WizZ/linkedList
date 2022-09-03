@@ -41,6 +41,7 @@ class LinkedList{
   }
   at(index){
     //return the node at the given list
+    if(index<0) return;
     let i=0;
     let node = this.head;
     while(node){
@@ -86,9 +87,31 @@ class LinkedList{
   }
   insertAt(value, index){
     //inserts node of given value at the provided index
+    if(index<0) return;
+    let node = this.head;
+    let newNode = new Node(value);
+    for(let i=0; node; i++){
+      if(i==index){
+        newNode.next = node;
+        newNode.pre = node.pre;
+        node.pre.next = newNode;
+        node.pre = newNode;
+      }
+      node = node.next;
+    }
   }
   removeAt(index){
     //remove the node at given index
+    if(index<0) return;
+    let node = this.head;
+    for(let i=0; node; i++){
+      if(i==index){
+        node.pre.next = node.next;
+        node.next.pre = node.pre;
+
+      }
+      node = node.next;
+    }
   }
 }
 
@@ -100,6 +123,8 @@ class Node{
   }
 }
 
+
+//test cases
 const list  = new LinkedList();
 list.append(3)
 list.append(8)
@@ -108,7 +133,11 @@ list.prepend('000')
 list.append(98)
 list.append(6)
 list.pop();
+list.insertAt(69, 4)
+list.removeAt(1);
 
+
+//test cases
 console.log(list.toString())
 console.log('size', list.size())
 let i = 3
