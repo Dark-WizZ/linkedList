@@ -29,9 +29,23 @@ class LinkedList{
   }
   size(){
     //returns total number of size
+    let c = 0;
+    let node = this.head;
+    while(node){
+      c++;node
+      node = node.next;
+    }
+    return c;
   }
   at(index){
     //return the node at the given list
+    let i=0;
+    let node = this.head;
+    while(node){
+      if(i==index) return node;
+      node = node.next;
+      i++
+    }
   }
   pop(){
     //remove the last element from the list
@@ -65,7 +79,7 @@ class LinkedList{
 class Node{
   constructor(value){
     this.value = value;
-    this.node = null;
+    this.next = null;
   }
 }
 
@@ -78,3 +92,5 @@ list.append(98)
 list.append(6)
 
 console.log(list.toString())
+console.log('size', list.size())
+console.log("at index", list.at(4))
